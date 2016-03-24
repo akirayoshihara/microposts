@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   # validates :users, presence: true, length: { minimum: 2 }, on: :update　できなかった・・
   # validates :comment, presence: true, length: { in: 6..20 }, on: :update　できなかった・・
-  # validates :age, presence: true, numericality: { only_integer: true }, on: :update  できなかった・・
+  validates :age, presence: true, numericality: { only_integer: true }, on: :update
                     
     has_secure_password
 end
