@@ -2,24 +2,39 @@
   <h2><%= link_to "編集画面へ", edit_user_path %><br>
   <%= gravatar_for @user %></h2>
 
-
-<%= form_for(@user , :html => {:class => 'form-horizontal'} )do |f| %>
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="id">ユーザー名</label>
-        <div class="col-sm-10">
-            <%= @user.name %>
-        </div>
+<div class="panel panel-default">
+  <div class="panel-heading"><label>ユーザー名：<%= @user.name %></label></div>
+  <div class="panel-body">           
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>入力項目</th>
+            <th>Datebase</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+            <th><%= link_to "編集する", edit_user_path %></th>
+          </tr>
+          <tr>
+            <td>パスワード</td>
+            <td>●●●●●<%= @user.password %></td>
+            <th><%= link_to "編集する", edit_user_path %></th>
+          </tr>
+          <tr>
+            <td>プロフィー</td>
+            <td><%= @user.comment %></td>
+            <th><%= link_to "編集する", edit_user_path %></th>
+          </tr>
+          <tr>
+            <td>生年月日</td>
+            <td><%= @user.age %></td>
+            <th><%= link_to "編集する", edit_user_path %></th>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="id">プロフィール</label>
-        <div class="col-sm-10">
-            <%= @user.comment %>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="age">生年月日</label>
-        <div class="col-sm-10">
-        <%= @user.age %>
-        </div>
-    </div>
-<% end %>
+</div>
