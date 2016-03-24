@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  # validates :users, presence: true, length: { minimum: 2 }  なぜかできない
-  # validates :comment, presence: true, length: { in: 6..20 }　なぜかできない
-  validates :age, presence: true, numericality: { only_integer: true }
+  # validates :users, presence: true, length: { minimum: 2 }, on: :update　できなかった・・
+  # validates :comment, presence: true, length: { in: 6..20 }, on: :update　できなかった・・
+  # validates :age, presence: true, numericality: { only_integer: true }, on: :update  できなかった・・
                     
     has_secure_password
 end
