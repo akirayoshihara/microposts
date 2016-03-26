@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
   
   def show # 追加
    @user = User.find(params[:id])
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path
     else
-      render `edit`
+      render 'edit'
     end
   end
   
@@ -37,4 +39,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :age, :comment, :users,
                                  :password_confirmation)
   end
+  
+  def correct_user
+    @user = User.find(params[:id]) #3.4 IDをとってきている
+    if @user == current_user  #　==がいこーるの意味
+    else
+      redirect_to root_url # root_pathが(/)のみ
+    end
+  end
+  
 end
