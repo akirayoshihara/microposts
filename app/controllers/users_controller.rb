@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     end
   end
   
+
   private
 
   def user_params
@@ -47,5 +48,6 @@ class UsersController < ApplicationController
       redirect_to root_url # root_pathが(/)のみ
     end
   end
+  
   
 end

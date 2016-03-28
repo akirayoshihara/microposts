@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   
-  validates :password,presence: true, length: { in: 4..20 }
   validates :password, length: { in: 4..20 }, on: :update
   validates :comment, presence: true, length: { maximum: 140 }, on: :update
   validates :age, presence: true, numericality: { only_integer: true },inclusion: { in:1..100}, on: :update
