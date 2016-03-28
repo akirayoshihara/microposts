@@ -1,8 +1,24 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,:following, :followers]
+  before_action :correct_user, only: [:edit, :update, :destroy,:following, :followers]
   
   
+#  def following # 追加 フォローする
+#    @user = User.find(params[:id])
+#    @relationships = @user.following.order(created_at: :desc)
+#  end
+  
+#  def follower # 追加 フォローされる
+#    @user = User.find(params[:id])
+#    @relationships = @user.follower.order(created_at: :desc)
+#  end
+  
+  
+  
+  def index
+    @users = User.all
+  end
+
   def show # 追加
    @user = User.find(params[:id])
    @microposts = @user.microposts.order(created_at: :desc)
@@ -47,15 +63,13 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :age, :comment, :users,
+    params.require(:user).permit(:name, :email, :password, :age, :comment,
                                  :password_confirmation)
   end
   
+  # 正しいユーザーかどうか確認
   def correct_user
     @user = User.find(params[:id]) 
-    if @user == correct_user
-    else
-      redirect_to root_url
-    end
+    redirect_to root_url if @user != current_user
   end
 end

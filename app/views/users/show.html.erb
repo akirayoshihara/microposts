@@ -23,42 +23,45 @@
 ↓課題時の
 
 <h1>プロフィール管理画面</h1>
-  <p style="text-align:center"><%= link_to "編集画面へ", edit_user_path %></p>
+<aside class="col-md-4">
   <%= gravatar_for @user %>
+</aside>
 
-<div class="panel panel-default">
-  <div class="panel-heading"><label>ユーザー名：<%= @user.name %></label></div>
-  <div class="panel-body">           
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>入力項目</th>
-            <th>Datebase</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= @user.email %></td>
-            <th><%= link_to "編集する", edit_user_path %></th>
-          </tr>
-          <tr>
-            <td>パスワード</td>
-            <td>●●●●●<%= @user.password %></td>
-            <th><%= link_to "編集する", edit_user_path %></th>
-          </tr>
-          <tr>
-            <td>プロフィー</td>
-            <td><%= @user.comment %></td>
-            <th><%= link_to "編集する", edit_user_path %></th>
-          </tr>
-          <tr>
-            <td>生年月日</td>
-            <td><%= @user.age %></td>
-            <th><%= link_to "編集する", edit_user_path %></th>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-heading"><label>ユーザー名：<%= @user.name %></label></div>
+    <div class="panel-body">           
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>入力項目</th>
+              <th>Datebase</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @user.email %></td>
+              <th><%= link_to "編集する", edit_user_path %></th>
+            </tr>
+            <tr>
+              <td>パスワード</td>
+              <td>●●●●●<%= @user.password %></td>
+              <th><%= link_to "編集する", edit_user_path %></th>
+            </tr>
+            <tr>
+              <td>プロフィー</td>
+              <td><%= @user.comment %></td>
+              <th><%= link_to "編集する", edit_user_path %></th>
+            </tr>
+            <tr>
+              <td>生年月日</td>
+              <td><%= @user.age %></td>
+              <th><%= link_to "編集する", edit_user_path %></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
 </div>

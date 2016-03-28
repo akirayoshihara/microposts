@@ -5,23 +5,28 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password,presence: true, length: { in: 4..20 }
-  
-  
-  validates :password, length: { in: 4..20 }, on: :update
+
   validates :comment, presence: true, length: { maximum: 140 }, on: :update
   validates :age, presence: true, numericality: { only_integer: true },inclusion: { in:1..100}, on: :update
                    
   has_secure_password
+  validates :password, presence: true, length: { in: 4..20 },allow_nil:true
+  
+  
   has_many :microposts
+  # 12.2 UserとRelationshipの関連付け(user.rb & relationship.rb)
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
+  
     
-  #フォローする
+  #フォローする (active)
   has_many :following_relationships, class_name:  "Relationship",
                                    foreign_key: "follower_id",
                                    dependent:   :destroy
   has_many :following_users, through: :following_relationships, source: :followed
   
-  #フォローされる
+  #フォローされる (passive)
   has_many :follower_relationships, class_name:  "Relationship",
                                   foreign_key: "followed_id",
                                   dependent:   :destroy
