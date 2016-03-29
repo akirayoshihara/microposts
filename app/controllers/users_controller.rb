@@ -2,16 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update, :destroy]
   
-  
-#  def following # 追加 フォローする
-#    @user = User.find(params[:id])
-#    @relationships = @user.following.order(created_at: :desc)
-#  end
-  
-#  def follower # 追加 フォローされる
-#    @user = User.find(params[:id])
-#    @relationships = @user.follower.order(created_at: :desc)
-#  end
+
   
   def following
     @title = "Following"
@@ -43,7 +34,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user # ここを修正
+      redirect_to root_path
     else
       render 'new'
     end
