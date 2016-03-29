@@ -14,12 +14,7 @@ class User < ActiveRecord::Base
   
   
   has_many :microposts
-  # 12.2 UserとRelationshipの関連付け(user.rb & relationship.rb)
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
-  
-    
+
   #フォローする (active)
   has_many :following_relationships, class_name:  "Relationship",
                                    foreign_key: "follower_id",

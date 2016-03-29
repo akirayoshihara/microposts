@@ -8,5 +8,8 @@ class CreateRelationships < ActiveRecord::Migration
       
       t.index [:follower_id, :followed_id], unique: true # この行を追加
     end
+    add_index :relationships, :follower_id
+    add_index :relationships, :followed_id
+    add_index :relationships, [:follower_id, :followed_id], unique: true
   end
 end
