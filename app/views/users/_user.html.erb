@@ -1,5 +1,7 @@
 <% @user ||= current_user %>
 <li>
-    <%= link_to gravatar_for user, size: 50 %>
+    <%= gravatar_for user, size: 50 %>
+    <%= link_to user.name, user_path %>
+    <%= render 'shared/stats' %>
 
 </li>
