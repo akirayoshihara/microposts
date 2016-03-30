@@ -1,5 +1,6 @@
+<% if logged_in? %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-3">
     <section class="user_info">
       <%= render 'shared/user_info' %>
     </section>
@@ -7,7 +8,7 @@
       <%= render 'shared/stats' %>
     </section>
   </aside>
-  <div class="col-md-8">
+  <div class="col-md-9">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
@@ -17,51 +18,53 @@
     <% end %>
   </div>
 </div>
+<% end %>
+
 
 ↑カリキュラム
 <hr>
 ↓課題時の
 
 <h1>プロフィール管理画面</h1>
-<aside class="col-md-4">
+<aside class="col-md-3">
   <%= gravatar_for @user %>
 </aside>
 
-<div class="col-md-8">
+<div class="col-md-9">
   <div class="panel panel-default">
     <div class="panel-heading"><label>ユーザー名：<%= @user.name %></label></div>
-    <div class="panel-body">           
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>入力項目</th>
-              <th>Datebase</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>メールアドレス</td>
-              <td><%= @user.email %></td>
-              <th><%= link_to "編集する", edit_user_path %></th>
-            </tr>
-            <tr>
-              <td>パスワード</td>
-              <td>●●●●●<%= @user.password %></td>
-              <th><%= link_to "編集する", edit_user_path %></th>
-            </tr>
-            <tr>
-              <td>プロフィー</td>
-              <td><%= @user.comment %></td>
-              <th><%= link_to "編集する", edit_user_path %></th>
-            </tr>
-            <tr>
-              <td>生年月日</td>
-              <td><%= @user.age %></td>
-              <th><%= link_to "編集する", edit_user_path %></th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="panel-body">           
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>入力項目</th>
+                <th>Datebase</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>メールアドレス</td>
+                <td><%= @user.email %></td>
+                <th> </th>
+              </tr>
+              <tr>
+                <td>パスワード</td>
+                <td><%= @user.password %></td>
+                <th> </th>
+              </tr>
+              <tr>
+                <td>プロフィー</td>
+                <td><%= @user.comment %></td>
+                <th> </th>
+              </tr>
+              <tr>
+                <td>生年月日</td>
+                <td><%= @user.age %></td>
+                <th> </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
   </div>
 </div>

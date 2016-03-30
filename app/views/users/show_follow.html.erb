@@ -1,6 +1,6 @@
 <% provide(:title, @title) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-3">
     <section class="user_info">
       <%= render 'shared/user_info' %>
     </section>
@@ -8,7 +8,7 @@
       <%= render 'shared/stats' %>
     </section>
   </aside>
-  <div class="col-md-8">
+  <div class="col-md-9">
     <h3><%= @title %></h3>
       <ul class="users follow">
         <%= render @users %>
