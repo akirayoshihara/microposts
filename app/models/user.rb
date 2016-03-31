@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :age, presence: true, numericality: { only_integer: true },inclusion: { in:1..100}, on: :update
                    
   has_secure_password
-  validates :password, presence: true, length: { in: 4..20 },allow_nil:true
+  validates :password, length: { in: 4..20 }, allow_nil:true
   
   
   has_many :microposts

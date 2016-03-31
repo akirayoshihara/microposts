@@ -20,17 +20,8 @@
 </div>
 <% end %>
 
-
-↑カリキュラム(残す)
-<hr>
-↓課題時の(残す)
-
-<h1>プロフィール管理画面</h1>
-<aside class="col-md-3">
-  <%= gravatar_for @user %>
-</aside>
-
-<div class="col-md-9">
+<div class="col-md-9 col-md-offset-3">
+  <hr>
   <div class="panel panel-default">
     <div class="panel-heading"><label>ユーザー名：<%= @user.name %></label></div>
       <div class="panel-body">           
@@ -38,7 +29,7 @@
             <thead>
               <tr>
                 <th>入力項目</th>
-                <th>Datebase</th>
+                <th>ユーザー情報一覧</th>
                 <th></th>
               </tr>
             </thead>
