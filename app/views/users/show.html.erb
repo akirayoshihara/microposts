@@ -2,10 +2,10 @@
 <div class="row">
   <aside class="col-md-3">
     <section class="user_info">
-      <%= render 'shared/user_info' %>
+      <%= render 'shared/user_info',user:@user %>
     </section>
     <section class="stats">
-      <%= render 'shared/stats' %>
+      <%= render 'shared/stats',user:@user %>
     </section>
   </aside>
   <div class="col-md-9">
@@ -20,17 +20,8 @@
 </div>
 <% end %>
 
-
-↑カリキュラム
-<hr>
-↓課題時の
-
-<h1>プロフィール管理画面</h1>
-<aside class="col-md-3">
-  <%= gravatar_for @user %>
-</aside>
-
-<div class="col-md-9">
+<div class="col-md-9 col-md-offset-3">
+  <hr>
   <div class="panel panel-default">
     <div class="panel-heading"><label>ユーザー名：<%= @user.name %></label></div>
       <div class="panel-body">           
@@ -38,7 +29,7 @@
             <thead>
               <tr>
                 <th>入力項目</th>
-                <th>Datebase</th>
+                <th>ユーザー情報一覧</th>
                 <th></th>
               </tr>
             </thead>
@@ -54,12 +45,12 @@
                 <th> </th>
               </tr>
               <tr>
-                <td>プロフィー</td>
+                <td>プロフィール</td>
                 <td><%= @user.comment %></td>
                 <th> </th>
               </tr>
               <tr>
-                <td>生年月日</td>
+                <td>年齢</td>
                 <td><%= @user.age %></td>
                 <th> </th>
               </tr>
