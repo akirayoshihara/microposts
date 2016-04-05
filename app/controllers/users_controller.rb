@@ -17,12 +17,13 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(2)
   end
 
   def show # 追加
    @user = User.find(params[:id])
    @microposts = @user.microposts.order(created_at: :desc)
+   @users = User.all.page(params[:page]).per(3)
   end
   
   def new

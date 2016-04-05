@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   
   
   has_many :microposts
+  has_many :items
 
   #フォローする (active)
   has_many :following_relationships, class_name:  "Relationship",

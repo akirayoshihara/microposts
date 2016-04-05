@@ -1,61 +1,64 @@
 <% if logged_in? %>
-<div class="row">
-  <aside class="col-md-3">
-    <section class="user_info">
-      <%= render 'shared/user_info',user:@user %>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats',user:@user %>
-    </section>
-  </aside>
-  <div class="col-md-9">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-    <% end %>
+  <div class="row">
+    <aside class="col-md-3">
+      <section class="user_info">
+        <%= render 'shared/user_info',user:@user %>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats',user:@user %>
+      </section>
+    </aside>
+    <div class="col-md-9">
+      <%= render 'follow_form' if logged_in? %>
+      <% if @user.microposts.any? %>
+        <h3>Microposts (<%= @user.microposts.count %>)</h3>
+        <ol class="microposts">
+          <%= render @microposts %>
+        </ol>
+      <% end %>
+      
+      <%= paginate @users %>
+      
+    </div>
   </div>
-</div>
 <% end %>
-
 <div class="col-md-9 col-md-offset-3">
   <hr>
   <div class="panel panel-default">
     <div class="panel-heading"><label>ユーザー名：<%= @user.name %></label></div>
       <div class="panel-body">           
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>入力項目</th>
-                <th>ユーザー情報一覧</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>メールアドレス</td>
-                <td><%= @user.email %></td>
-                <th> </th>
-              </tr>
-              <tr>
-                <td>パスワード</td>
-                <td><%= @user.password %></td>
-                <th> </th>
-              </tr>
-              <tr>
-                <td>プロフィール</td>
-                <td><%= @user.comment %></td>
-                <th> </th>
-              </tr>
-              <tr>
-                <td>年齢</td>
-                <td><%= @user.age %></td>
-                <th> </th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>入力項目</th>
+              <th>ユーザー情報一覧</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @user.email %></td>
+              <th> </th>
+            </tr>
+            <tr>
+              <td>パスワード</td>
+              <td><%= @user.password %></td>
+              <th> </th>
+            </tr>
+            <tr>
+              <td>プロフィール</td>
+              <td><%= @user.comment %></td>
+              <th> </th>
+            </tr>
+            <tr>
+              <td>年齢</td>
+              <td><%= @user.age %></td>
+              <th> </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
