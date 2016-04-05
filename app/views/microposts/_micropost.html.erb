@@ -1,6 +1,11 @@
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  
+    <%= link_to bookmarks_path(@micropost), id: 'bookmark-link', remote:true do %>
+        <%= raw bookmark_icon(@micropost, current_user) %>
+    <% end %>
+    
+  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>  
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">
     投稿 <%= time_ago_in_words(micropost.created_at) %> ago.

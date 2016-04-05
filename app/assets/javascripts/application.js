@@ -1,3 +1,11 @@
+bookmark_icon = ->
+  $(".bookmark-link").click ->
+    $(this).children('i').toggleClass('fa-bookmark-o')
+
+$(document).ready(bookmark_icon);
+$(document).on ('page:change', bookmark_icon);
+
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
