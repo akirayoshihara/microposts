@@ -1,16 +1,20 @@
 class BookmarksController < ApplicationController
-    belongs_to :user
-    belongs_to :micropost
+    before_action :logged_in_user
     
-    def toggle
-        micropost_id = params[:micropost_id]
-        user_bookmarks = current_user.bookmarks
-        if user_bookmarks.exists?(post: micropost_id)
-            user_bookmarks.save
-            user_bookmarks.where(post: micropost_id).destroy_all
-        else
-            user_bookmarks.create(user: current_user, post: Micropost.find(micropost_id))
-        end
-        render :nothing => true
+    def index
     end
+    
+    def show
+        @micropost = Micropost.find(params[:micropost_id])
+        @microposts = @user.bookmark_microposts.order(created_at: :desc)
+    end
+    def create
+        @micropost = Micropost.find(params[:micropost_id])
+        current_user.bookmark(@micropost)
+    end
+    def destroy
+        @micropost = current_user.bookmarks_relationships.find(params[:id])
+        current_user.unbookmark(@micropost)
+    end
+    
 end

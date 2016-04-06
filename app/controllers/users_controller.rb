@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @users = @user.following_users
     render 'show_follow'
   end
-
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
@@ -16,8 +15,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
   
-  def toggle
-    @user = User.find(params[:micropost_id])
+  def bookmarks
+    @title = "Bookmarks"
+    @micropost = Micropost.find(params[:id])
+    @microposts = @user.bookmark_microposts
   end
 
   def index

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts
   resources :relationships, only: [:create, :destroy]
-  resources :bookmarks, only: [:create, :destroy]
+  resources :bookmarks
   
   #1． ルーティングの定義
   resources :users do
@@ -17,8 +17,5 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  
-  resources :microposts do
-    get "bookmarks/toggle"
-  end
+
 end

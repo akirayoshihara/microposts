@@ -1,0 +1,3 @@
+<%= form_for(current_user.bookmarks_relationships.build, remote: true) do |f| %>
+  <%= f.submit "☆", class: "btn btn-primary" %>
+<% end %>

@@ -1,10 +1,6 @@
 <li id="micropost-<%= micropost.id %>">
+<%= render 'microposts/bookmark_form', micropost: micropost %>
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  
-    <%= link_to bookmarks_path(@micropost), id: 'bookmark-link', remote:true do %>
-        <%= raw bookmark_icon(@micropost, current_user) %>
-    <% end %>
-    
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>  
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">
