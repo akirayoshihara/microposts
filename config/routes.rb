@@ -9,12 +9,17 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts
   resources :relationships, only: [:create, :destroy]
-  resources :bookmarks
+  resources :bookmarks, only: [:create, :destroy]
   
   #1． ルーティングの定義
   resources :users do
     member do
       get :following, :followers
+    end
+  end
+  resources :users do
+    member do
+      get :bookmarks
     end
   end
 

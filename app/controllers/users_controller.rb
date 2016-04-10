@@ -17,8 +17,8 @@ class UsersController < ApplicationController
   
   def bookmarks
     @title = "Bookmarks"
-    @micropost = Micropost.find(params[:id])
-    @microposts = @user.bookmark_microposts
+    @user  = User.find(params[:id])
+    @microposts = @user.bookmark_microposts.order(created_at: :desc)
   end
 
   def index
